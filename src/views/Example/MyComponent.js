@@ -4,17 +4,35 @@ class MyComponent extends React.Component {
     /*
     JSX => return block
     */
+    state = {
+        name: 'Liberty',
+        firstName: 'Nguyễn',
+        sex: '[]'
+    }
+    handleOnchangeName = (event) => {
+        this.setState({
+            name: event.target.value
+        })
+    }
+    handleClickButton = () => {
+        console.log('hit the button')
+        alert('click me')
+    }
 
     render() {
-        let name = 'Liberty';
         return (
             <>
                 <div className="First">
-                    {console.log('My name is: ', name)}
-                    Wellcome! My name is {name}
+                    <input value={this.state.name} type="text"
+                        onChange={(event) => this.handleOnchangeName(event)}
+                    />
+                    My name is {this.state['name']}
                 </div>
-                <div className="LastS">
-                    Newbie
+                <div className="second">
+                    {this.state['firstName']}
+                </div>
+                <div className="third">
+                    <button onClick={() => this.handleClickButton()}>Click me</button>
                 </div>
             </>
         )
